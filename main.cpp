@@ -7,6 +7,8 @@ const int M = 20;
 const int N = 100;
 int currN = 10;
 bool countme = false;
+int currx = 720;
+int curry = 360;
 
 
 
@@ -36,21 +38,20 @@ bool check() {
 int main() {
     srand(time(0));	 
 
-	RenderWindow window(VideoMode(320, 480), "The Game!");
+	RenderWindow window(VideoMode(currx, curry), "The Game!");
 
     Texture t1,t2,t3;
 	t1.loadFromFile("images/tiles.png");
-	t2.loadFromFile("images/background.png");
-	t3.loadFromFile("images/frame.png");
+	//t2.loadFromFile("images/background.png");
+	//t3.loadFromFile("images/frame.png");
 
-	Sprite s(t1), background(t2), frame(t3);
+	Sprite s(t1);//, background(t2), frame(t3);
 
     int dx=0; bool rotate=0; int colorNum=1;
 	float timer=0,delay=0.3; 
-
 	Clock clock;
-
     while (window.isOpen()) {
+
 
 		float time = clock.getElapsedTime().asSeconds();
 		clock.restart();
@@ -89,14 +90,6 @@ int main() {
 
 		///////Tick//////
 		if (timer>delay) {
-
-
-
-
-
-
-
-
 
 		    for (int i=0;i<4;i++) { b[i]=a[i]; a[i].y+=1; }
 
@@ -143,6 +136,7 @@ int main() {
 
 		if (addc) {
 			++currN;
+			currx += 20;
 			addc = false;
 		}
 
@@ -150,7 +144,7 @@ int main() {
 
 	    /////////draw//////////
 	    window.clear(Color::White);	
-	    window.draw(background);
+	    //window.draw(background);
 		
 
 	    // show when reach the bottom
@@ -161,7 +155,7 @@ int main() {
 				 }
 				 s.setTextureRect(IntRect(field[i][j]*18,0,18,18));
 				 s.setPosition(j*18,i*18);
-				 s.move(28,31); //offset
+				// s.move(28,31); //offset
 				 window.draw(s);
 			}
 		}
@@ -171,12 +165,12 @@ int main() {
 		for (int i=0;i<4;i++) {
 			s.setTextureRect(IntRect(colorNum*18,0,18,18));
 			s.setPosition(a[i].x*18,a[i].y*18);
-			s.move(28,31); //offset
+			//s.move(28,31); //offset
 			window.draw(s);
 
 		}
 
-		window.draw(frame);
+		//window.draw(frame);
 	 	window.display();
 	}
 
