@@ -7,7 +7,7 @@ const int M = 20;
 const int N = 100;
 int currN = 10;
 bool countme = false;
-int currx = 720;
+int currx = 180;
 int curry = 360;
 
 
@@ -51,6 +51,7 @@ int main() {
 	float timer=0,delay=0.3; 
 	Clock clock;
     while (window.isOpen()) {
+
 
 
 		float time = clock.getElapsedTime().asSeconds();
@@ -109,7 +110,6 @@ int main() {
 
 		///////check lines//////////
 	    int k=M-1;
-	    bool addc= false;
 		for (int i=M-1;i>0;i--) {
 			int count=0;
 			for (int j=0;j<currN;j++) {
@@ -130,15 +130,30 @@ int main() {
 			if (countme == true) {
 				currN++;
 				countme = false;
+				Vector2u vec2(currx,curry);
+				std::cout <<"hey";
+				window.setSize(vec2);
 			}
 			//////////////
 
 
-		if (addc) {
+
+			/*
+
+			add what to remove last line when
+			complete and replace below
+
 			++currN;
 			currx += 20;
+			Vector2u vec2(currx,curry);
+			std::cout <<"hey";
+			window.setSize(vec2);
+			window.setActive(false);
+			window.setActive(true);
 			addc = false;
-		}
+			*/
+
+
 
 	    dx=0; rotate=0; delay=0.3;
 
