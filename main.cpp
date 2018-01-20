@@ -53,7 +53,6 @@ int main() {
     while (window.isOpen()) {
 
 
-
 		float time = clock.getElapsedTime().asSeconds();
 		clock.restart();
 		timer+=time;
@@ -110,6 +109,7 @@ int main() {
 
 		///////check lines//////////
 	    int k=M-1;
+	    bool addc= false;
 		for (int i=M-1;i>0;i--) {
 			int count=0;
 			for (int j=0;j<currN;j++) {
@@ -120,7 +120,7 @@ int main() {
 				}
 				if (k != i) countme = true;
 
-			    //field[k][j]=field[i][j];
+			    //field[k][j]=field[i][j]; // this makes line disappear
 			}
 			if (count<currN) {
 				k--;
@@ -128,32 +128,31 @@ int main() {
 		}
 			//////////////
 			if (countme == true) {
-				currN++;
+				currN++;			// this makes extra "space"/column 
 				countme = false;
+				/*
+
+				add what to remove last line when
+				complete and replace below
+
+				++currN;
+				currx += 20;
 				Vector2u vec2(currx,curry);
 				std::cout <<"hey";
 				window.setSize(vec2);
+				window.setActive(false);
+				window.setActive(true);
+				addc = false;
+				*/
 			}
 			//////////////
 
 
-
-			/*
-
-			add what to remove last line when
-			complete and replace below
-
+		if (addc) {
 			++currN;
 			currx += 20;
-			Vector2u vec2(currx,curry);
-			std::cout <<"hey";
-			window.setSize(vec2);
-			window.setActive(false);
-			window.setActive(true);
 			addc = false;
-			*/
-
-
+		}
 
 	    dx=0; rotate=0; delay=0.3;
 
