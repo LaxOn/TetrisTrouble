@@ -8,6 +8,7 @@ const int N = 100;
 int currN = 10;
 bool countme = false;
 int currx = 180;
+int currx2 = 720;
 int curry = 360;
 
 
@@ -38,7 +39,7 @@ bool check() {
 int main() {
     srand(time(0));	 
 
-	RenderWindow window(VideoMode(currx, curry), "The Game!");
+	RenderWindow window(VideoMode(currx2, curry), "The Game!");
 
     Texture t1,t2,t3;
 	t1.loadFromFile("images/tiles.png");
@@ -109,7 +110,6 @@ int main() {
 
 		///////check lines//////////
 	    int k=M-1;
-	    bool addc= false;
 		for (int i=M-1;i>0;i--) {
 			int count=0;
 			for (int j=0;j<currN;j++) {
@@ -120,7 +120,8 @@ int main() {
 				}
 				if (k != i) countme = true;
 
-			    //field[k][j]=field[i][j]; // this makes line disappear
+			    field[k][j]=field[i][j]; // this makes line disappear
+
 			}
 			if (count<currN) {
 				k--;
@@ -130,6 +131,11 @@ int main() {
 			if (countme == true) {
 				currN++;			// this makes extra "space"/column 
 				countme = false;
+				currx += 20;
+				Vector2u vec2(currx,curry);
+				window.setSize(vec2);
+				// int col[N] ={0};
+				// field[M] = col;
 				/*
 
 				add what to remove last line when
@@ -146,13 +152,6 @@ int main() {
 				*/
 			}
 			//////////////
-
-
-		if (addc) {
-			++currN;
-			currx += 20;
-			addc = false;
-		}
 
 	    dx=0; rotate=0; delay=0.3;
 
@@ -181,7 +180,6 @@ int main() {
 			s.setPosition(a[i].x*18,a[i].y*18);
 			//s.move(28,31); //offset
 			window.draw(s);
-
 		}
 
 		//window.draw(frame);
