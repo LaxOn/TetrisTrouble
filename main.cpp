@@ -8,7 +8,7 @@ const int N = 100;
 int currN = 10;
 bool countme = false;
 int currx = 180;
-int currx2 = 720;
+int permx = 720;
 int curry = 360;
 
 
@@ -39,7 +39,7 @@ bool check() {
 int main() {
     srand(time(0));	 
 
-	RenderWindow window(VideoMode(currx2, curry), "The Game!");
+	RenderWindow window(VideoMode(permx, curry), "The Game!");
 
     Texture t1,t2,t3;
 	t1.loadFromFile("images/tiles.png");
